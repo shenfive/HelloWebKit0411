@@ -12,6 +12,7 @@ import WebKit
 class ViewController: UIViewController {
     @IBOutlet weak var theWKWebView: WKWebView!
     
+    @IBOutlet weak var url: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         if let url = URL(string: "https://www.ichih.com/"){
@@ -20,6 +21,13 @@ class ViewController: UIViewController {
             
         }}
 
-
+    @IBAction func goToPage(_ sender: Any) {
+        let urlString = url.text ?? "https://www.ichih.com/"
+        if let url = URL(string: urlString){
+            let req = URLRequest(url: url)
+            theWKWebView.load(req)
+        }
+    }
+    
 }
 
